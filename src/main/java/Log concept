@@ -1,0 +1,38 @@
+1.you can create instance of Logger class
+
+ private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+ This will create the instance of Logger class which is only available for mentioned class.
+
+ 2. Or you can use Lombock
+
+@Slf4j --> annotation on class
+
+For DEBUG and TRACE --> Addition configuration needs to be done in application.properties or application.yml file
+
+logging:
+  level:
+    com:
+      mayursbapplication:
+        journalApp: TRACE  // TRACE and above severity lever will work like ERROR
+
+3. TO stop the log completely:
+
+logging:
+  level:
+    root : OFF
+
+4. To stop log of particular class
+
+logging:
+  level:
+    com:
+      mayursbapplication:
+        journalApp:
+          services:
+           UserService: OFF
+
+5. To configure the log in external file
+
+create logback.xml under resources
+

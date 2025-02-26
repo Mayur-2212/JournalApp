@@ -1,0 +1,73 @@
+
+Controller-->Service-->Repository
+
+Custom Repo interface should always need to extend MongoRepository interface.
+
+MongoRepository interface provide my default methods to interact with DB.
+
+POJO class should be mapped(ORM) with collection(table) of MongoDB by using @Document annotation and to declare any field as primary key for aDB,
+Use @Id annotation on that variable or field.(Non Mandatory)
+@Document (collation = "journal_entries") --> It will search the declared collection in DB and mapped class with it.
+If not collection not declare then class name will be considered as collection name and same name collection will mapped with class.
+
+
+ @Component --> helps to collect the class by IOC container or Application Context or to make the class as Bean.
+ @Autowired --> use to injecting object/instance of class. It will work for only those classes which are beans.
+  also helps to implement the interface and assign the implementation of interface to the variable above which @Autowired configured.
+
+ 1. Make an Entity class(POJO) with getter/setter method which will provide template to entry.
+
+ 2. Make a controller class which we create end points for API and called the service class.
+
+ To call the service call, first inject the instance of that class using @Autowired annotation. @Autowired will only work if service class as declared with @Component.
+ use @RestController --> use to store the class instance in IOC container and API related config
+ use @@RequestMapping("/endpoint") --> If you are performing any operations such as delete,post,update in postman where we need to provide some JSON.
+ example --> localhost:8080/endpoint url need to hit on postman to perform POST,PUT etc operation with JSON file
+ You can make different method to invoke on GET,POST,PUT,DELETE operation of postman using @GetMapping,@PostMapping,@PutMapping,@DeleteMapping.
+
+ 3. Service class with use instance of Repo interface using @Autowired.
+     Service class will use methods of repo class where MONGORepository is extended with methods.
+
+ 4. Repo interface extends the MONGOREPOSITORY interface where we will get all the CRUD methods which helps to interact with DB.
+
+
+ After hitting url on postman.
+
+ Go to CMD--> run - mongosh command --> show dbs --> you will get all the existing dbs with the one you are created by declaring name in application.properties file
+ example -> spring.data.mongodb.database=journalDB
+
+ To switch db--> use dbname
+ example --> use journaldb
+
+ To check collection inside DB--> show collections // journalEntry
+ To check documents of collection --> db.journalEntry.find() // You will get all the entries presents in collections
+
+
+ if you have @Id on particular field to make it as primary key. Then if you don't use the that field on postman while POST,
+ still MongoDB will assign an ID of object type to that document.
+
+ If you provided the ID in postman then same will save against that document.
+ Once you inserted one document with particular ID in DB, still again if you try to insert the document with same ID then existing document with that id will update only.
+ No new document will inserted.
+
+
+ResponseEntity class is used to handle or customized the http response.
+
+@Data is a Lombok annotation that simplifies the creation of Java POJOs (Plain Old Java Objects) by automatically generating boilerplate code
+like getters, setters, toString(), equals(), hashCode(), and a constructor.
+It helps in reducing the amount of code you need to write for data objects.
+
+
+ @Transactional  // will make sure this method will do the all the task as one operation. Hence if exception trigger all operation rollback
+ Also we need to set @EnableTransactionManagement on Main class
+
+also need to implement PlatformTransactionManager which return instance of MongoTransactionManager
+@Bean
+public PlatformTransactionManager Add(MongoDatabaseFactory dbFactory){
+        return new MongoTransactionManager(dbFactory);
+	}
+
+
+@Configuration
+@EnableWebSecurity
+
