@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.ArrayList;
 @Document(collection = "users")
 @Data
-
 public class User{
 
     @Id

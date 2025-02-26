@@ -20,11 +20,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         User user = userRepo.findByUserName(username);
 
         if(user != null){
-            return org.springframework.security.core.userdetails.User.builder()
+            UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
                     .username(user.getUserName())
                     .password(user.getPassword())
                     .roles(user.getRole().toArray(new String[0]))
                     .build();
+            return userDetails;
         }
         throw new UsernameNotFoundException("User not found with this username:" + username);
 
