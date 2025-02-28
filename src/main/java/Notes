@@ -81,4 +81,4 @@ public PlatformTransactionManager Add(MongoDatabaseFactory dbFactory){
 3. Create one service class i.e. weatherService . store that key and API URL in variables. //restTemplate used to hit the URL
 4. Crate on controller to hit the end point.
 5. Create one POJO class (weatherResponse)to declare the boiler plate for weather. Or to convert json request to POJO class. external API will send the response in json format we need to convert it into POJO.
-6. create one bean to inject the instance of @Autowire classes . ie. WeatherService or WeatherResponse
+6. create one bean to inject the instance of @Autowire classes . ie. WeatherService or WeatherResponse....
