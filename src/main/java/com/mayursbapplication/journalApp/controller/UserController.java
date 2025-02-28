@@ -3,6 +3,7 @@ package com.mayursbapplication.journalApp.controller;
 import com.mayursbapplication.journalApp.entity.User;
 import com.mayursbapplication.journalApp.repository.UserRepo;
 import com.mayursbapplication.journalApp.services.UserService;
+import com.mayursbapplication.journalApp.services.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,6 @@ public class UserController{
     private UserService userService;
     @Autowired
     private UserRepo userRepo;
-
 
     @PutMapping()
     public ResponseEntity<?> updateUser(@RequestBody User user) {
@@ -61,6 +61,7 @@ public class UserController{
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
 }
 
 
