@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 // To configure external API in Code
-@Component
+@Service
 public class WeatherService{
 
     private static final String apiKey = "080a7a1a6f16e084b81f0c8426a4d40b";
