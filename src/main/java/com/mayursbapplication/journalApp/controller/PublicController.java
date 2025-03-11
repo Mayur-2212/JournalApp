@@ -26,17 +26,6 @@ public class PublicController{
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
- // In case of API call we will never userid in url
-//    @GetMapping("userId/{id}")
-//    public ResponseEntity<User> getUserByID(@PathVariable ObjectId id){
-//        Optional<User> userById = userService.findById(id);
-//
-//        if(userById.isPresent()) {
-//            return new ResponseEntity<>(userById.get(),HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-
 
     @PostMapping("create-user")
     public ResponseEntity<User> createUser(@RequestBody User user){
