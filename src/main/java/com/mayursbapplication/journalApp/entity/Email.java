@@ -2,14 +2,17 @@ package com.mayursbapplication.journalApp.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "config_journal_app")
+@Document
 @Data
 @NoArgsConstructor
-public class ConfigJournalEntity{
+public class Email{
 
-    private String key;
-    private String value;
+    private String to;
+    private String subject;
+    private String body;
+    private String attachment;
 
 }

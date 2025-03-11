@@ -1,5 +1,6 @@
 package com.mayursbapplication.journalApp.entity;
 
+import com.mayursbapplication.journalApp.enums.Sentiment;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -22,40 +23,6 @@ public class JournalEntry{
 
     private LocalDateTime date;
 
-
-    /// Lombok library is used hence
-    /// No need explicitly declare getter and setter methods
-//    public ObjectId getId() {
-//        return id;
-//    }
-//
-//    public void setId(ObjectId id) {
-//        this.id = id;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getContent() {
-//        return content;
-//    }
-//
-//    public void setContent(String content) {
-//        this.content = content;
-//    }
-//
-//    public LocalDateTime getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(LocalDateTime date) {
-//        this.date = date;
-//    }
-
+    private Sentiment sentiment;
 
 }

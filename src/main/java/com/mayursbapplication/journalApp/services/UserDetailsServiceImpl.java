@@ -1,6 +1,8 @@
 package com.mayursbapplication.journalApp.services;
 
+
 import com.mayursbapplication.journalApp.entity.User;
+
 import com.mayursbapplication.journalApp.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,12 +22,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         User user = userRepo.findByUserName(username);
 
         if(user != null){
-            UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
+            return org.springframework.security.core.userdetails.User.builder()
                     .username(user.getUserName())
                     .password(user.getPassword())
                     .roles(user.getRole().toArray(new String[0]))
                     .build();
-            return userDetails;
         }
         throw new UsernameNotFoundException("User not found with this username:" + username);
 

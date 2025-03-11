@@ -18,9 +18,6 @@ public class WeatherService{
     @Value("${weather_api_key}")
     private String apiKey;
 
-    // declare in DB hence comment out
-   //private static final String API ="http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
-
     @Autowired
     private AppCache appCache;
 
